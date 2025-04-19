@@ -15,11 +15,15 @@ export class AuthService {
     return this.refreshTokenSubject.asObservable();
   }
   login(credentials: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login`, credentials);
+    return this.http.post(`${this.apiUrl}/login`, credentials, {
+      withCredentials: true
+    });
   }
-
+  
   register(data: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/register`, data);
+    return this.http.post(`${this.apiUrl}/register`, data, {
+      withCredentials: true
+    });
   }
   getToken(): string | null {
     return localStorage.getItem('access_token');
@@ -47,7 +51,10 @@ export class AuthService {
   }
 
   logout(): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/logout`, {});
+    return this.http.post<any>(`${this.apiUrl}/logout`, {}, {
+      withCredentials: true
+    });
   }
+  
   
 }

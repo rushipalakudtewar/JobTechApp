@@ -12,21 +12,20 @@ export class EmployeeService {
   constructor(private http: HttpClient) {}
 
   getAllJobs(query: any): Observable<any> {
-    return this.http.get(`${this.apiUrl}jobs`+query);
+    return this.http.get(`${this.apiUrl}jobs` + query, { withCredentials: true });
   }
   
-
   applyForJob(data: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}applications`,data);
+    return this.http.post(`${this.apiUrl}applications`, data, { withCredentials: true });
   }
-
+  
   updateProfile(data: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}profile/employee`,data);
+    return this.http.put(`${this.apiUrl}profile/employee`, data, { withCredentials: true });
   }
-
-  getProfile(): Observable<any>{
-    return this.http.get(`${this.apiUrl}profile/employee`);
+  
+  getProfile(): Observable<any> {
+    return this.http.get(`${this.apiUrl}profile/employee`, { withCredentials: true });
   }
-
+  
 
 }

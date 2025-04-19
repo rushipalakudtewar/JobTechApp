@@ -12,14 +12,21 @@ export class EmployerService {
   constructor(private http:HttpClient) { }
 
   getMyJobs(query: any): Observable<any> {
-    return this.http.get(`${this.apiUrl}jobs/my-jobs`+query);
+    return this.http.get(`${this.apiUrl}jobs/my-jobs` + query, {
+      withCredentials: true
+    });
   }
+  
   createjob(data: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}jobs`,data);
+    return this.http.post(`${this.apiUrl}jobs`, data, {
+      withCredentials: true
+    });
   }
-
+  
   getApplicationsForEmployer(): Observable<any> {
-    return this.http.get(`${this.apiUrl}applications`); // endpoint for aggregated applications
+    return this.http.get(`${this.apiUrl}applications`, {
+      withCredentials: true
+    });
   }
-    
+  
 }
