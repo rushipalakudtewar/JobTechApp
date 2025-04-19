@@ -1,0 +1,27 @@
+<div class="job-container">
+  <div class="header">
+    <h2>Job Listings</h2>
+    <button class="add-btn" (click)="navigateToAddJob()">+ Add Job</button>
+  </div>
+
+  <div *ngIf="jobs.length === 0" class="no-jobs">
+    No jobs found. Click on "Add Job" to create a new job listing.
+  </div>
+
+  <div class="job-grid">
+    <div class="job-card" *ngFor="let job of jobs">
+      <h3 class="job-title">{{ job.title }}</h3>
+      <p class="job-desc">{{ job.description }}</p>
+
+      <p class="job-info">
+        <strong>Skills:</strong>
+        <span class="skill-badge" *ngFor="let skill of job.skillsRequired">{{ skill }}</span>
+      </p>
+
+      <p class="job-info"><strong>Location:</strong> {{ job.location }}</p>
+      <p class="job-info"><strong>Salary:</strong> ₹{{ job.salary }}</p>
+      <p class="job-info"><strong>Employment Type:</strong> {{ job.employmentType }}</p>
+      <p class="job-info"><strong>Experience:</strong> {{ job.experienceRequired }} years</p>
+    </div>
+  </div>
+</div>

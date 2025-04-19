@@ -1,0 +1,32 @@
+<div class="container">
+    <h2 class="title">Your Job Applications</h2>
+  
+    <div *ngIf="loading" class="loading">Loading...</div>
+    <div *ngIf="!loading && applications.length === 0" class="no-data">No applications found.</div>
+  
+    <div *ngFor="let job of applications" class="job-card">
+      <div class="job-header">
+        <h3>{{ job.jobTitle }}</h3>
+        <span class="badge">{{ job.applications.length }} Applicants</span>
+      </div>
+  
+      <div class="applicant-grid">
+        <div *ngFor="let app of job.applications" class="applicant-card">
+          <h4>{{ app.employee.name }}</h4>
+          <p>Email: {{ app.employee.email }}</p>
+          <p>Experience: {{ app.employee.experience }} years</p>
+          <div class="skills">
+            <strong>Skills:</strong>
+            <span *ngFor="let skill of app.employee.skills" class="skill">{{ skill }}</span>
+          </div>
+          <div class="status-date">
+            <span class="status">Status: {{ app.status }}</span>
+            <span class="applied">Applied on: {{ app.appliedAt | date:'mediumDate' }}</span>
+          </div>
+        </div>
+      </div>
+      
+      
+    </div>
+  </div>
+  

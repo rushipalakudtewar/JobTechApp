@@ -1,0 +1,55 @@
+<div class="profile-container">
+    <h2>Update Your Profile</h2>
+    <form [formGroup]="profileForm" (ngSubmit)="submitProfile()" enctype="multipart/form-data">
+      <div class="form-group">
+        <label>Name</label>
+        <input formControlName="name" type="text" />
+      </div>
+  
+      <div class="form-group">
+        <label>Skills (comma separated)</label>
+        <input formControlName="skills" type="text" />
+      </div>
+  
+      <div class="form-group">
+        <label>Resume</label>
+        <input type="file" (change)="onFileChange($event)" />
+        <p style="font-size: small;">{{fileName}}</p>
+      </div>
+  
+      <hr />
+  
+      <h3>Experience</h3>
+      <div formArrayName="experience">
+        <div *ngFor="let exp of experience.controls; let i = index" [formGroupName]="i" class="card">
+          <input formControlName="company" placeholder="Company" />
+          <input formControlName="role" placeholder="Role" />
+          <input formControlName="from" type="date" placeholder="From" />
+          <input formControlName="to" type="date" placeholder="To" />
+          <textarea formControlName="description" placeholder="Description"></textarea>
+          <button type="button" (click)="removeExperience(i)">Remove</button>
+        </div>
+      </div>
+      <button type="button" (click)="addExperience()">+ Add Experience</button>
+  
+      <hr />
+  
+      <h3>Education</h3>
+      <div formArrayName="education">
+        <div *ngFor="let edu of education.controls; let i = index" [formGroupName]="i" class="card">
+          <input formControlName="institution" placeholder="Institution" />
+          <input formControlName="degree" placeholder="Degree" />
+          <input formControlName="fieldOfStudy" placeholder="Field of Study" />
+          <input formControlName="startYear" type="number" placeholder="Start Year" />
+          <input formControlName="endYear" type="number" placeholder="End Year" />
+          <button type="button" (click)="removeEducation(i)">Remove</button>
+        </div>
+      </div>
+      <button type="button" (click)="addEducation()">+ Add Education</button>
+  
+      <hr />
+  
+      <button class="submit-btn" type="submit" [disabled]="profileForm.invalid">Update Profile</button>
+    </form>
+  </div>
+  

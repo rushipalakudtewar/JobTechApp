@@ -1,0 +1,24 @@
+<div class="register-container">
+    <h2>Employer Register</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Company name:</label>
+        <input type="text" id="name" formControlName="name" placeholder="Enter your Company">
+      </div>
+  
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" formControlName="email" placeholder="Enter your email">
+      </div>
+  
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" formControlName="password" placeholder="Create a password">
+      </div>
+  
+      <button type="submit" [disabled]="registerForm.invalid">Register</button>
+      <p>Already registerd? <a routerLink="/auth/employer-login">SignIn Now</a></p>
+  
+    </form>
+  </div>
+  

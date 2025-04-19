@@ -1,0 +1,35 @@
+<div class="add-job-container">
+    <h2 class="form-title">Add New Job</h2>
+  
+    <form (ngSubmit)="submitJob()" [formGroup]="jobForm" class="job-form">
+      <label>Job Title</label>
+      <input type="text" formControlName="title" placeholder="Enter job title" />
+  
+      <label>Description</label>
+      <textarea formControlName="description" rows="5" placeholder="Enter job description"></textarea>
+  
+      <label>Skills Required (comma-separated)</label>
+      <input type="text" formControlName="skillsRequired" placeholder="e.g. Kotlin, Java, Python" />
+  
+      <label>Location</label>
+      <input type="text" formControlName="location" placeholder="Enter location" />
+  
+      <label>Salary</label>
+      <input type="number" formControlName="salary" placeholder="Enter salary in INR" />
+  
+      <label>Employment Type</label>
+      <select formControlName="employmentType">
+        <option value="">Select type</option>
+        <option value="Full-Time">Full-Time</option>
+        <option value="Part-Time">Part-Time</option>
+        <option value="Internship">Internship</option>
+        <option value="Contract">Contract</option>
+      </select>
+  
+      <label>Experience Required (years)</label>
+      <input type="number" formControlName="experienceRequired" placeholder="Enter experience" />
+  
+      <button type="submit" [disabled]="jobForm.invalid">Submit Job</button>
+    </form>
+  </div>
+  
