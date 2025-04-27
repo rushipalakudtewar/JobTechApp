@@ -14,7 +14,14 @@
         <div *ngFor="let app of job.applications" class="applicant-card">
           <h4>{{ app.employee.name }}</h4>
           <p>Email: {{ app.employee.email }}</p>
-          <p>Experience: {{ app.employee.experience }} years</p>
+          <!-- <p>Experience: {{ app.employee.experience }} years</p> -->
+        
+          <div *ngFor="let exp of app.employee.experience">
+            <p><strong>{{ exp.role }}</strong> at {{ exp.company }}</p>
+            <p>{{ exp.from | date: 'MMM yyyy' }} – {{ exp.to | date: 'MMM yyyy' }}</p>
+            <p>{{ exp.description }}</p>
+          </div>
+          
           <div class="skills">
             <strong>Skills:</strong>
             <span *ngFor="let skill of app.employee.skills" class="skill">{{ skill }}</span>
